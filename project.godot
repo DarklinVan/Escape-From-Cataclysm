@@ -11,5 +11,6 @@ config_version=5
 [application]
 
 config/name="Escape From Cataclysm"
+run/main_scene="uid://e2n3do6m8w1h"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
