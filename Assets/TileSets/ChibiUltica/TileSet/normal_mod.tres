@@ -1,0 +1,20 @@
+[gd_resource type="TileSet" load_steps=3 format=3 uid="uid://con4yfpeyjfmg"]
+
+[ext_resource type="Texture2D" uid="uid://b0wvmu5corr6u" path="res://Assets/TileSets/ChibiUltica/normal.png" id="1_gh5ss"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7x82p"]
+texture = ExtResource("1_gh5ss")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+0:0/0/terrain_set = 0
+0:0/0/terrain = 0
+0:0/0/terrains_peering_bit/right_side = 0
+
+[resource]
+tile_size = Vector2i(32, 32)
+terrain_set_0/mode = 2
+terrain_set_0/terrain_0/name = "Terrain 0"
+terrain_set_0/terrain_0/color = Color(0.5, 0.34375, 0.25, 1)
+terrain_set_0/terrain_1/name = "Terrain 1"
+terrain_set_0/terrain_1/color = Color(0.5, 0.4375, 0.25, 1)
+sources/0 = SubResource("TileSetAtlasSource_7x82p")

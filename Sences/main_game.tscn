@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://e2n3do6m8w1h"]
+
+[ext_resource type="TileSet" uid="uid://cj6e6knnthdwc" path="res://Assets/TileSets/ChibiUltica/TileSet/normal.tres" id="1_cl4ru"]
+[ext_resource type="Script" uid="uid://cwh6uboh1mjyr" path="res://Sences/tile_map.gd" id="1_yl2px"]
+
+[node name="MainGame" type="Node2D"]
+
+[node name="TileMap" type="Node" parent="."]
+script = ExtResource("1_yl2px")
+
+[node name="TileMapLayer" type="TileMapLayer" parent="TileMap"]
+tile_set = ExtResource("1_cl4ru")
+
+[node name="TileMapLayer2" type="TileMapLayer" parent="TileMap"]
