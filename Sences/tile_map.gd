@@ -21,8 +21,15 @@ const t_list = [
 	Vector2i(11,2),
 ]
 
+# 从chibi的json配置中映射index到图中的实际坐标
 func mapping_coor(chibi_id:int)->Vector2i:
-	return Vector2i(-1,-1)
+	# range 6128 to 12783
+	if chibi_id > 12783 or chibi_id < 6128:
+		return Vector2i(-1,-1)
+	var index = chibi_id - 6128
+	var x_index :int= index % 16 
+	var y_index :int= index / 16.0
+	return Vector2i(x_index,y_index)
 
 func _ready() -> void:
 	var normal_mod := NORMAL.duplicate()
