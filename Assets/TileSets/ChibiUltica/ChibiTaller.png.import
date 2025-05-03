@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dfhy50e15sny7"
-path="res://.godot/imported/giant.png-b7d49422b875446e0c916da618614358.ctex"
+uid="uid://bhn350qwvl5nx"
+path="res://.godot/imported/ChibiTaller.png-e35bf4719513139f8778ad5c84c1e5b3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/TileSets/ChibiUltica/giant.png"
-dest_files=["res://.godot/imported/giant.png-b7d49422b875446e0c916da618614358.ctex"]
+source_file="res://Assets/TileSets/ChibiUltica/ChibiTaller.png"
+dest_files=["res://.godot/imported/ChibiTaller.png-e35bf4719513139f8778ad5c84c1e5b3.ctex"]
 
 [params]
 
