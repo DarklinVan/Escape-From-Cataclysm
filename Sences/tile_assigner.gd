@@ -199,54 +199,54 @@ func test_atlas() -> void:
 	#ResourceSaver.save(atlas_img,"res://new_atlas_texture.tres")
 	
 class Sprites extends TilesetHelper:
-    # 定义一个数组，用于存储精灵树
+	# 定义一个数组，用于存储精灵树
 	var sprite_tree:Array[Sprites] = []
-    # 定义权重，默认为1
+	# 定义权重，默认为1
 	var weight = 1
-    # 定义当前精灵的索引，默认为-1
+	# 定义当前精灵的索引，默认为-1
 	var _sprite = -1
-    # 构造函数，初始化精灵树
+	# 构造函数，初始化精灵树
 	func _init(sprites) -> void:
-        # 如果输入是数组，调用_is_array函数处理
+		# 如果输入是数组，调用_is_array函数处理
 		if sprites is Array:
 			_is_array(sprites)
-        # 如果输入是字典，调用_is_dict函数处理
+		# 如果输入是字典，调用_is_dict函数处理
 		elif sprites is Dictionary:
 			_is_dict(sprites)
-        # 如果输入是浮点数，将其转换为整数并赋值给_sprite
+		# 如果输入是浮点数，将其转换为整数并赋值给_sprite
 		elif sprites is float:
 			_sprite = int(sprites)
-    # 处理数组类型的输入，构建精灵树
+	# 处理数组类型的输入，构建精灵树
 	func _is_array(sprites:Array):
 		for sprite in sprites:
-            # 递归创建Sprites对象并添加到sprite_tree中
+			# 递归创建Sprites对象并添加到sprite_tree中
 			sprite_tree.append(Sprites.new(sprite))
-    # 处理字典类型的输入，设置权重并构建精灵树
+	# 处理字典类型的输入，设置权重并构建精灵树
 	func _is_dict(sprites:Dictionary):
-        # 设置权重
+		# 设置权重
 		weight = int(sprites["weight"])
-        # 创建Sprites对象并添加到sprite_tree中
+		# 创建Sprites对象并添加到sprite_tree中
 		sprite_tree.append(Sprites.new(sprites["sprite"]))
-    # 判断当前节点是否为叶子节点
+	# 判断当前节点是否为叶子节点
 	func _is_leaf()->bool:
 		return sprite_tree.is_empty()
-    # 将当前节点转换为字符串
+	# 将当前节点转换为字符串
 	func _to_string() -> String:
 		if _is_leaf():
-            # 如果是叶子节点，返回当前精灵的索引
+			# 如果是叶子节点，返回当前精灵的索引
 			return str(_sprite)
-        # 如果不是叶子节点，返回子节点的字符串表示，以逗号分隔
+		# 如果不是叶子节点，返回子节点的字符串表示，以逗号分隔
 		return ",".join(sprite_tree)
-    # 获取图集中的纹理
+	# 获取图集中的纹理
 	func get_atlas(atlas:Texture2D,atlas_range:Vector2i,tile_size:Vector2i) -> Array[AtlasTexture]:
 		if _is_leaf():
-            # 如果是叶子节点，计算纹理坐标并创建AtlasTexture对象
+			# 如果是叶子节点，计算纹理坐标并创建AtlasTexture对象
 			var coor = map_tileindex_to_coor(atlas_range,_sprite)
 			var temp = AtlasTexture.new()
 			temp.atlas = atlas
 			return [get_atlas_from_atlastexture(temp,coor,tile_size)]
 		else:
-            # 如果不是叶子节点，遍历子节点并获取其图集中的纹理
+			# 如果不是叶子节点，遍历子节点并获取其图集中的纹理
 			var atlases: Array[AtlasTexture]= []
 			for c in sprite_tree: # 遍历sprite_tree中的每个子节点
 				var a :Array[AtlasTexture] = c.get_atlas(atlas,atlas_range,tile_size)

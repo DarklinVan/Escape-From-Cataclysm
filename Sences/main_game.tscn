@@ -5,6 +5,10 @@
 
 [node name="MainGame" type="Node2D"]
 
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(737, 579)
+zoom = Vector2(0.85, 0.85)
+
 [node name="TileMap" type="Node" parent="."]
 script = ExtResource("1_yl2px")
 
