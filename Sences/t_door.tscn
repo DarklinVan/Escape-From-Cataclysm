@@ -1,0 +1,51 @@
+[gd_scene load_steps=9 format=3 uid="uid://fng11m50nqen"]
+
+[ext_resource type="Texture2D" uid="uid://ds5thl72aojfn" path="res://Assets/TileSets/ChibiUlticaSelected/raw/t_door/t_door_frame.png" id="1_nguuj"]
+[ext_resource type="Script" uid="uid://dtibgpkkfrwgp" path="res://Sences/t_door.gd" id="1_rsy1v"]
+[ext_resource type="Texture2D" uid="uid://vo1fsshg0oeh" path="res://Assets/TileSets/ChibiUlticaSelected/raw/t_door/t_door_o.png" id="2_ea58e"]
+[ext_resource type="Texture2D" uid="uid://1sik7q05n6qw" path="res://Assets/TileSets/ChibiUlticaSelected/raw/t_door/t_door_c.png" id="3_rsy1v"]
+[ext_resource type="Texture2D" uid="uid://blja4pgp50m0v" path="res://Assets/TileSets/Keyboard Letters and Symbols.png" id="4_ea58e"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rsy1v"]
+atlas = ExtResource("4_ea58e")
+region = Rect2(64, 32, 16, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xvhpp"]
+size = Vector2(32, 32)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_rsy1v"]
+radius = 53.0848
+
+[node name="TDoorFrame" type="Sprite2D"]
+texture = ExtResource("1_nguuj")
+script = ExtResource("1_rsy1v")
+
+[node name="TDoorO" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("2_ea58e")
+
+[node name="TDoorC" type="Sprite2D" parent="."]
+texture = ExtResource("3_rsy1v")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
+z_index = 100
+position = Vector2(0, -27)
+texture = SubResource("AtlasTexture_rsy1v")
+
+[node name="DoorBody" type="StaticBody2D" parent="."]
+visible = false
+disable_mode = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DoorBody"]
+visible = false
+shape = SubResource("RectangleShape2D_xvhpp")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="Playertest" type="CollisionShape2D" parent="Area2D"]
+light_mask = 0
+shape = SubResource("CircleShape2D_rsy1v")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

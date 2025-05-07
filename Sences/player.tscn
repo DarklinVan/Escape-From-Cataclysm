@@ -1,0 +1,41 @@
+[gd_scene load_steps=6 format=3 uid="uid://c3ixhjuge8rwr"]
+
+[ext_resource type="Script" uid="uid://bthk66tad1wpm" path="res://Sences/character_body_2d.gd" id="1_8lje0"]
+[ext_resource type="Texture2D" uid="uid://dft5uyp6m1f1b" path="res://Assets/2d_lights_and_shadows_neutral_point_light.webp" id="2_vq3pu"]
+[ext_resource type="Texture2D" uid="uid://dj67x8d6opqyj" path="res://Assets/TileSets/ChibiUltica/human_body_plus.png" id="3_e8tdt"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j2bkn"]
+atlas = ExtResource("3_e8tdt")
+region = Rect2(128, 288, 32, 48)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0nyot"]
+radius = 6.0
+
+[node name="CharacterBody2D" type="CharacterBody2D"]
+z_index = 1
+disable_mode = 2
+motion_mode = 1
+platform_on_leave = 2
+platform_floor_layers = 4294967294
+platform_wall_layers = 1
+script = ExtResource("1_8lje0")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+visible = false
+energy = 0.5
+shadow_enabled = true
+shadow_color = Color(0, 0, 0, 0.831373)
+texture = ExtResource("2_vq3pu")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = SubResource("AtlasTexture_j2bkn")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+z_index = 10
+zoom = Vector2(2.115, 2.115)
+process_callback = 0
+position_smoothing_enabled = true
+position_smoothing_speed = 10.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_0nyot")
